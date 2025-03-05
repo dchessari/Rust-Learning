@@ -30,5 +30,6 @@ fn main() {
 
     println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
     println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
-    println!("The area of rect2 is {}", area(&rect2));
+    println!("The area of rect2 is {}", &rect2.area());
+    // NOTE : the order to reference is &variable.function(variabletocompareifthereisone));
 }
