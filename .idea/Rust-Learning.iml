@@ -4,10 +4,17 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/coins/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/how-to-option-t/src" isTestSource="false" />
+<<<<<<< Updated upstream
       <sourceFolder url="file://$MODULE_DIR$/restaurant/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/coins/target" />
       <excludeFolder url="file://$MODULE_DIR$/how-to-option-t/target" />
       <excludeFolder url="file://$MODULE_DIR$/restaurant/target" />
+=======
+      <sourceFolder url="file://$MODULE_DIR$/rectangles/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/coins/target" />
+      <excludeFolder url="file://$MODULE_DIR$/how-to-option-t/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rectangles/target" />
+>>>>>>> Stashed changes
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
