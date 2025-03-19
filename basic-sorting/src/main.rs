@@ -23,8 +23,9 @@ fn count_mode(count: &mut Vec<i32>) -> Option<i32> {
     }
 
     let mut mode_calc = HashMap::new();
-    for number in count {
-        *mode_calc.entry(&number).or_insert(0) += 1;
+
+    for &num in count.iter() {
+        *mode_calc.entry(num).or_insert(0) += 1;
     }
 
     let mut max_count = 0;
@@ -33,7 +34,7 @@ fn count_mode(count: &mut Vec<i32>) -> Option<i32> {
     for (&number, &count) in &mode_calc {
         if count > max_count {
             max_count = count;
-            mode = Some(*number);
+            mode = Some(number);
         }
     }
     mode
@@ -43,7 +44,10 @@ fn main() {
     // let mut count: Vec<f64> = vec! {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     let mut count = vec! {9, 3, 4, 29, 14, 20, 1, 23, 19, };
 
-    println!("Listed numbers:{count:?}");
-    println!("Median: {}", count_median);
-    println!("Mode: {}", count_mode);
+    let median = count_median(&mut count);
+    let mode = count_mode(&mut count);
+
+    println!("Listed numbers: {count:?}");
+    println!("Median: {:?}", median);
+    println!("Mode: {:?}", mode);
 }
