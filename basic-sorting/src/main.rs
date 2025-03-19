@@ -23,7 +23,7 @@ fn count_mode(count: &mut Vec<i32>) -> Option<i32> {
     }
 
     let mut mode_calc = HashMap::new();
-    for &number in count {
+    for number in count {
         *mode_calc.entry(&number).or_insert(0) += 1;
     }
 
@@ -33,7 +33,7 @@ fn count_mode(count: &mut Vec<i32>) -> Option<i32> {
     for (&number, &count) in &mode_calc {
         if count > max_count {
             max_count = count;
-            mode = Some(number);
+            mode = Some(*number);
         }
     }
     mode
