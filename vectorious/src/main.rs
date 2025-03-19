@@ -17,8 +17,8 @@ fn main() {
     // println!("The third element is {third}");
     // let third: Option<&i32> = v.get(2);
     // match third {
-        // Some(third) => println!("The third element is {third}"),
-        // None => println!("There is no third element."),
+    // Some(third) => println!("The third element is {third}"),
+    // None => println!("There is no third element."),
     // }
 
     // ! Lists each on a seperate line with a for loop
@@ -38,5 +38,4 @@ fn main() {
         SpreadsheetCell::Text(String::from("blue")),
         SpreadsheetCell::Float(10.12),
     ];
-
 }

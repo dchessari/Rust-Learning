@@ -23,5 +23,5 @@ fn main() {
     // the method also works on a literal directly:
     let s = "initial contents".to_string();
 
-
+    
 }
