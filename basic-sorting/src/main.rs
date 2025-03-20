@@ -37,7 +37,7 @@ fn count_mode(count: &mut Vec<i32>) -> Option<i32> {
             mode = Some(number);
         }
     }
-    mode
+    return mode;
 }
 
 fn main() {
