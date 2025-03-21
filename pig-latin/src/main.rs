@@ -1,26 +1,13 @@
-fn check_word (original: &str) -> String {
+fn squeel_piggy (original: &str) -> String {
     // sort string into words that start with vowels and words that start with consts
     let vowels = ['a', 'e', 'i', 'o', 'u'];
-    // let cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l' 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
 
-    for word in original.split_whitespace() {
-
+    let Some(first_char) = word.chars().next() {
+        if first_char.contains(&vowels[..]) {
+            format!("{}-hay", original)
+            else { format!("{}-{}ay", original, first_char)
+        }
     }
-}
-
-fn vowel_start() {
-    // how to handle words that start with vowels
-
-}
-
-fn cons_start() {
-    // how to handle words that start with consts
-
-}
-
-fn suffix() {
-    // update original string to be in pig latin
-
 }
 
 fn main() {
