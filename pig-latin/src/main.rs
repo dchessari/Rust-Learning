@@ -1,9 +1,9 @@
-fn check_word (original: &str) -> &str {
+fn check_word (original: &str) -> String {
     // sort string into words that start with vowels and words that start with consts
     let vowels = ['a', 'e', 'i', 'o', 'u'];
-    let cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l' 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+    // let cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l' 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
 
-    for original.starts_with(&vowels'-') {
+    for word in original.split_whitespace() {
 
     }
 }
