@@ -5,8 +5,9 @@ fn add_employee(data: &HashMap<String, Vec<String>>) {
     for (name, department) in employees.iter() {
         if !department.is_empty() {
             department.push("Added employee to department");
+            let mut employee = name.clone();
         } else {
-            department.push(words[1]);
+            if department
         }
     }
 }
