@@ -2,21 +2,26 @@ use std::collections::HashMap;
 use std::io;
 
 fn add_employee(data: &mut HashMap<String, Vec<String>>, employees: &str, department: &str) {
-    let mut new_name = String::from(employees);
-    let mut department = String::from(department);
+    let new_name = String::from(employees);
+    let dep = String::from(department.clone());
 
-    match data.get_mut(&department) {
-        Some(employees) => {
-            employees.push(String::from(new_name));
-            println!("Added Employee '{}' to Department: {}", employees, department);
+    match data.get_mut(&dep) {
+        Some(existing_employees) => {
+            existing_employees.push(new_name.clone());
+            println!("Added Employee '{}' to Department: {}", new_name, dep);
         },
         None => {
-            let mut new_name = Vec::new();
-            employees.push(&new_name);
-            data.insert(department.to_string(), new_name);
-            println!("Added Employee '{}' to NEW Department: {}", new_name, department);
+            let mut new_employee_list = Vec::new();
+            new_employee_list.push(new_name.clone());
+            data.insert(dep, new_employee_list);
+            println!("Added Employee: {} to NEW Department: {}", new_name, department);
         }
     }
+}
+
+fn list(data: &mut HashMap<String, Vec<String>>, employees: &str, department: &str) {
+    let full_list = data.get(department);
+    println!("{:?}", full_list);
 }
 
 fn main() {
@@ -24,6 +29,7 @@ fn main() {
 
     loop {
         println!("Please enter employee info in format [DEPARTMENT] [NAME]");
+        println!("Type [list] for a full list of departments");
         println!("Type [quit] to exit");
 
         let mut input = String::new();
@@ -41,10 +47,11 @@ fn main() {
         if words.len() == 2 {
             let department = words[0];
             let employees = words[1];
+            add_employee(&mut data, employees, department);
         }
 
         else if words.len() == 1 && words[0] == "list" {
-            // CALL FUNCTION TO PRINT DEPT LIST
+
         }
 
         else if words.len() == 2 && words[1] == "department" {
@@ -64,7 +71,7 @@ names to a department in a company; for example, “Add Sally to Engineering” 
 department or all people in the company by department, sorted alphabetically.*/
 
 /*allow hashmaps
-allow std input
+allow std io
 
 *function to handle NAME*
 take vector containing name list
