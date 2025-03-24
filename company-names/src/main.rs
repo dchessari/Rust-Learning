@@ -1,13 +1,20 @@
 use std::collections::HashMap;
 use std::io;
 
-fn add_employee(data: &HashMap<String, Vec<String>>) {
-    for (name, department) in employees.iter() {
-        if !department.is_empty() {
-            department.push("Added employee to department");
-            let mut employee = name.clone();
-        } else {
-            if department
+fn add_employee(data: &mut HashMap<String, Vec<String>>, employees: &str, department: &str) {
+    let mut new_name = String::from(employees);
+    let mut department = String::from(department);
+
+    match data.get_mut(&department) {
+        Some(employees) => {
+            employees.push(String::from(new_name));
+            println!("Added Employee '{}' to Department: {}", employees, department);
+        },
+        None => {
+            let mut new_name = Vec::new();
+            employees.push(&new_name);
+            data.insert(department.to_string(), new_name);
+            println!("Added Employee '{}' to NEW Department: {}", new_name, department);
         }
     }
 }
