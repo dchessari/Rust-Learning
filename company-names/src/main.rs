@@ -19,18 +19,22 @@ fn add_employee(data: &mut HashMap<String, Vec<String>>, employees: &str, depart
     }
 }
 
-fn list(data: &mut HashMap<String, Vec<String>>, employees: &str, department: &str) {
-    let full_list = data.get(department);
-    println!("{:?}", full_list);
+fn list(data: &mut HashMap<String, Vec<String>>) {
+    for (key, value) in data {
+        let mut department = String::from(key);
+        let mut employees = value.join(", ");
+        println!("{department}: {employees}");
+    }
 }
 
 fn main() {
     let mut data: HashMap<String, Vec<String>> = HashMap::new();
 
+    println!("Please enter employee info in format [DEPARTMENT] [NAME]");
+    println!("Type [list] for a full list of departments");
+    println!("Type [quit] to exit");
+
     loop {
-        println!("Please enter employee info in format [DEPARTMENT] [NAME]");
-        println!("Type [list] for a full list of departments");
-        println!("Type [quit] to exit");
 
         let mut input = String::new();
         io::stdin()
@@ -51,7 +55,7 @@ fn main() {
         }
 
         else if words.len() == 1 && words[0] == "list" {
-
+            list(&mut data);
         }
 
         else if words.len() == 2 && words[1] == "department" {
