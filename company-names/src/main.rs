@@ -8,6 +8,7 @@ fn add_employee(data: &mut HashMap<String, Vec<String>>, employees: &str, depart
     match data.get_mut(&dep) {
         Some(existing_employees) => {
             existing_employees.push(new_name.clone());
+            existing_employees.sort();
             println!("Added Employee '{}' to Department: {}", new_name, dep);
         },
         None => {
@@ -24,6 +25,17 @@ fn list(data: &mut HashMap<String, Vec<String>>) {
         let mut department = String::from(key);
         let mut employees = value.join(", ");
         println!("{department}: {employees}");
+    }
+}
+
+fn list_spec(data: &HashMap<String, Vec<String>>, department: &str) {
+    if let Some(employees) = data.get(department) {
+        let mut sorted_employees = employees.clone();
+        sorted_employees.sort();
+        let employees_string = sorted_employees.join(", ");
+        println!("{}    : {}", department, employees_string);
+    } else {
+        println!("No employees found in {} department", department);
     }
 }
 
@@ -48,7 +60,7 @@ fn main() {
         }
 
         let words: Vec<&str> = input.split_whitespace().collect();
-        if words.len() == 2 {
+        if words.len() == 2 && words[0] != "list" {
             let department = words[0];
             let employees = words[1];
             add_employee(&mut data, employees, department);
@@ -58,8 +70,9 @@ fn main() {
             list(&mut data);
         }
 
-        else if words.len() == 2 && words[1] == "department" {
-            // CALL FUNCTION TO PRINT DEPARTMENT SPECIFIC LIST
+        else if words.len() == 2 && words[0] == "list" {
+            let department = words[1];
+            list_spec(&data, department);
         }
 
         else {
